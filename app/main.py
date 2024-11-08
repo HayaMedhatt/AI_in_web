@@ -60,7 +60,6 @@ def extract_text_from_pdf(uploaded_file: UploadFile) -> str:
         return f"Error processing the PDF: {e}"
 
 def save_to_database(db, data):
-    # Assuming a simple model with the columns 'label' and 'text'
     from sqlalchemy import Column, Integer, String
     from sqlalchemy.ext.declarative import declarative_base
 
@@ -72,7 +71,7 @@ def save_to_database(db, data):
         label = Column(String, index=True)
         text = Column(String)
 
-    db.create_all()  # Create tables if they don't exist
+    db.create_all()  
 
     for label, text in data:
         db.add(ExtractedData(label=label, text=text))
