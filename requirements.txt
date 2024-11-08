@@ -40,6 +40,6 @@ spacy==3.7.4
 numpy==1.25.2
 PyMuPDF==1.24.12
 SQLAlchemy==2.0.17
-psycopg2-binary==2.9.6  # PostgreSQL adapter for Python
+psycopg2-binary==2.9.6  
 
 
