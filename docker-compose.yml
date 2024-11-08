@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  fastapi-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nlp-app-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      - ./uploads:/app/uploads  # Mount the 'uploads' directory into the container
+    environment:
+      - MODEL_PATH=/app/Model/nlp_ner_model2
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15-alpine
+    container_name: nlp-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: nlp_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
