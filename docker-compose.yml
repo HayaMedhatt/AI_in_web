@@ -10,7 +10,7 @@ services:
       - "8000:8000"
     volumes:
       - .:/app
-      - ./uploads:/app/uploads  # Mount the 'uploads' directory into the container
+      - ./uploads:/app/uploads  
     environment:
       - MODEL_PATH=/app/Model/nlp_ner_model2
     depends_on:
